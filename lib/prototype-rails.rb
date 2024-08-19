@@ -3,7 +3,7 @@ require 'active_support'
 
 module PrototypeRails
   class Engine < Rails::Engine
-    initializer 'prototype-rails.initialize' do
+    initializer 'prototype-rails.initialize', after: :finisher_hook do
       ActiveSupport.on_load(:action_controller) do
         require 'prototype-rails/on_load_action_controller'
       end
